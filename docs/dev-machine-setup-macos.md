@@ -22,6 +22,7 @@ See latest install docs [here](https://brew.sh/).
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install git wget
 brew install tree # optional package for directory listing
+brew install ripgrep # optional tool for recursively searching directories
 ```
 
 ### Install Z Shell
@@ -135,6 +136,14 @@ alias pc='ps -e -o user,pid,comm'
 fd() {
   find . -name "*$1*" -type d -print
 }
+
+# Find something in a git repo
+# Examples:
+#   rgfind Button
+#   rgfind "<Button"
+rgfind () {
+  rg -F "$@" --type-add 'ts:*.{ts,tsx}' --type=ts --glob='packages/*/src/**' --glob='apps/*/src/**' --glob='!node_modules/**'
+}
 ```
 
 ### Try building a React app
@@ -166,7 +175,9 @@ Here are some useful Visual Studio Code extensions:
 - [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [CSS Variable Autocomplete](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [IntelliSense for CSS class names in HTML](https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion)
 - [Git Lens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
